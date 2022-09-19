@@ -12,10 +12,10 @@ def encrypt(pk,m):
     q = (p-1)/2
     r = random.SystemRandom().randint(1, q)
     c1 = pow(g, r, p)
-    c2 = (pow(pk, r, p) * (m % p)) % p
+    c2 = (pow(pk, r, p) * (m % p)) % p #this might need some tweaking
     return [c1, c2]
 
 def decrypt (sk, c):
-    m = (c[1]%p) / (pow(c[0], sk, p))
+    m = (c[1] * pow(c[0], p-1-sk, p)) % p
     return m
 
