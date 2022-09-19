@@ -1,3 +1,9 @@
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
+from elgamal import keygen, encrypt, decrypt
 
+if __name__ == '__main__':
+    keys = keygen()
+    print(keys)
+    c = encrypt(keys[0], 10000001)
+    print(c)
+    print(decrypt(keys[1], c))
